@@ -888,7 +888,7 @@ describe('client', () => {
     });
   });
 
-  it('should be able to handle inlined fragments on an Interface type', (done) => {
+  it('should be able to handle inlined fragments on an Interface type', () => {
     const query = gql`
       query items {
         items {
@@ -928,9 +928,8 @@ describe('client', () => {
       networkInterface,
       addTypename: false,
     });
-    client.query({ query }).then((actualResult) => {
+    return client.query({ query }).then((actualResult) => {
       assert.deepEqual(actualResult.data, result);
-      done();
     });
   });
 
